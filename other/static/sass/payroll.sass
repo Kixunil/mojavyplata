@@ -1,0 +1,100 @@
+body
+	background: #ddd
+	font-family: 'Roboto', sans-serif
+
+.payroll
+	background: #fff
+	padding: 20px
+	width: 400px
+	display: inline-block
+
+	&__title
+		font-size: 10px
+		padding-bottom: 25px
+		font-weight: bold
+
+		.date
+			font-size: 14px
+			text-transform: uppercase
+			font-weight: 500
+
+		.logo
+			background: #fff url("../img/logo.png") 15px center no-repeat
+			height: 22px
+
+	&__head
+		background: url('../img/stripe-pattern.png')
+		padding: 18px
+
+		.employee,
+		.chart
+			min-height: 70px
+			padding: 20px
+			font-weight: bold
+
+		.chart
+			background: #fff url('../img/chart.png') center center no-repeat
+
+		.employee
+			font-size: 24px
+			line-height: 28px
+
+		.gray-label
+			font-size: 12px
+			color: #808080
+
+		.remaining
+			font-size: 16px
+			color: #4c4c4c
+			font-weight: 700
+
+		table
+			width: 100%
+
+		table td:last-child
+			text-align: right
+
+	&__body
+		table:first-child
+			margin-top: 20px
+
+		table
+			width: 100%
+			color: #fff
+
+		table tbody
+			font-size: 13px
+			font-weight: 300
+
+		table .headline
+			text-transform: uppercase
+			font-weight: 500
+
+			td
+				padding-top: 24px
+				padding-bottom: 5px
+
+		table th
+			font-size: 16px
+			padding: 18px 15px
+			text-transform: uppercase
+			font-weight: 500
+
+			&:first-child
+				width: 80px
+				padding-left: 8px
+				padding-right: 8px
+				text-align: center
+
+		table th:last-child,
+		table td:last-child
+			width: 125px
+
+		table td
+			padding: 2px 24px
+
+		table tbody tr:first-child td
+			padding-top: 24px
+
+		table tbody tr:last-child td
+			padding-bottom: 24px

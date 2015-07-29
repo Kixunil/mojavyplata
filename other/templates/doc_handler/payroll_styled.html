@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Styled</title>
+
+	<!-- Stylesheet -->
+	<link href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,300' rel='stylesheet' type='text/css'>
+	<link href="../../static/css/bootstrap.css" rel="stylesheet">
+	<link href="../../static/css/bootstrap/bootstrap-flat.css" rel="stylesheet">
+	<link href="../../static/css/font-awesome.css" rel="stylesheet">
+	<link href="../../static/css/main.css" rel="stylesheet">
+
+	<!-- custom payroll styles -->
+	<link href="../../static/css/payroll.css" rel="stylesheet">
+	<link href="../../static/css/helpers.css" rel="stylesheet">
+</head>
+<body>
+	<!-- <div class="container"> -->
+		
+		{% for result in data.payroll_list.payroll %}
+
+		<!-- <div class="row"> -->
+			<!-- <div class="col-xs-4"> -->
+				<div class="payroll">
+
+					<!-- title -->
+					<div class="payroll__title">
+						<div class="row">
+							<div class="col-xs-8 logo"></div>
+							<div class="col-xs-4 date tar">
+								{{ result.datum }}
+							</div>
+						</div>
+					</div>
+
+					<!-- head -->
+					<div class="payroll__head">
+						<div class="row">
+							<div class="col-xs-8">
+								<div class="white-bg employee">
+									{{ result.meno }}
+								</div>
+							</div>
+							<div class="col-xs-4 pl5">
+								<div class="chart white-bg tar"></div>
+							</div>
+						</div>
+
+						<div class="row mt30">
+							<div class="col-xs-6">
+								<div class="white-bg p2015">
+									<div class="gray-label"> Odpracovane hodiny: </div>
+									<div class="remaining">{{ result.odpracovane_hodiny|cut:".00" }}</div>
+								</div>
+							</div>
+							<div class="col-xs-6 pl5">
+								<div class="white-bg p2015">
+									<div class="gray-label"> Zostavajuca dovolenka: </div>
+									<div class="remaining">{{ result.zostatkova_dovolenka|cut:".0" }}</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="row mt30">
+							<div class="col-xs-12">
+								<div class="p2015 white-bg">
+									<table>
+										<tr>
+										{% if result.osobne_ohodnotenie != None %}<td>Osobne ohodnotenie</td><td>{{ result.osobne_ohodnotenie }} &nbsp;€</td>{% else%}{% endif %}
+										</tr>
+										<tr>
+										{% if result.lekar_priepustka != None %}<td>Lekar (priepustka)</td><td>{{ result.lekar_priepustka }} &nbsp;€</td>{% else%}{% endif %}
+										</tr>
+										<tr>
+											{% if result.nahrada_za_dovolenku != None %}<td>Nahrada za dovolenku</td><td>{{ result.nahrada_za_dovolenku }} &nbsp;€</td>{% else%}{% endif %}
+										</tr>
+										<tr>
+											{% if result.zrazka_zo_mzdy != None %}<td>Zrazka zo mzdy</td><td>{{ result.zrazka_zo_mzdy }} &nbsp;€</td>{% else%}{% endif %}
+										</tr>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="payroll__body">
+						<!-- mzda table -->
+						<table>
+							<thead>
+								<tr>
+									<th class="blue-0">100%</th>
+									<th class="blue-1">Tvoja mzda</th>
+									<th class="blue-2 tar pl5">{{ result.celkova_cena_prace }}&nbsp;€</th>
+								</tr>
+							</thead>
+<!-- 							<tbody>
+								<tr>
+									<td class="blue-3">zaklady plat tarifny</td>
+									<td class="blue-4 tar">{{ result.celkova_cena_prace }}&nbsp;€</td>
+								</tr>
+								<tr>
+									<td class="blue-3">premie</td>
+									<td class="blue-4 tar">FIXME</td>
+								</tr>
+								<tr>
+									<td class="blue-3">stravne listky</td>
+									<td class="blue-4 tar">{{ result.obedy }}&nbsp;€</td>
+								</tr>
+							</tbody>
+ -->						</table>
+
+						<!-- odvody table -->
+						<table>
+							<thead>
+								<tr>
+									<th class="orange-0">{{result.percento_daneodvody }}%</th>
+									<th class="orange-1">Dane a odvody</th>
+									<th class="orange-2 tar pl5">{{result.dane_a_odvody_sum }}&nbsp;€</th>
+								</tr>
+							</thead>
+							<tbody>
+								<!-- zdravotka -->
+								<tr class="headline">
+									<td colspan="2" class="orange-3 pr5">Do zdravotnej poistovne</td>
+									<td class="orange-4 tar">&nbsp;</td>
+								</tr>
+								<tr>
+									<td colspan="2" class="orange-3">Zdravotne poistenie</td>
+									<td class="orange-4 tar">{{ result.do_zdravotnej_sum }}&nbsp;€</td>
+								</tr>
+								<!-- socialka -->
+								<tr class="headline">
+									<td colspan="2" class="orange-3 pr5">Do socialnej poistovne</td>
+									<td class="orange-4 tar">&nbsp;</td>
+								</tr>
+								<tr>
+									<td colspan="2" class="orange-3">Dochodkove poist. starobne</td>
+									<td class="orange-4 tar">{{ result.starobne_poist_sum }}&nbsp;€</td>
+								</tr>
+								<tr>
+									<td colspan="2" class="orange-3">Dochodkove poist. invalidne</td>
+									<td class="orange-4 tar">{{ result.invalidne_poist_sum }}&nbsp;€</td>
+								</tr>
+								<tr>
+									<td colspan="2" class="orange-3">Poistenie v nezamestnanosti</td>
+									<td class="orange-4 tar">{{ result.nezam_poist_sum }}&nbsp;€</td>
+								</tr>
+								<tr>
+									<td colspan="2" class="orange-3">Garancne poistenie</td>
+									<td class="orange-4 tar">{{ result.garancne_poistenie }}&nbsp;€</td>
+								</tr>
+								<tr>
+									<td colspan="2" class="orange-3">Nemocenske poistenie</td>
+									<td class="orange-4 tar">{{ result.nemocenske_poistenie }}&nbsp;€</td>
+								</tr>
+								<tr>
+									<td colspan="2" class="orange-3">Urazove poistenie</td>
+									<td class="orange-4 tar">{{ result.urazove_poistenie }}&nbsp;€</td>
+								</tr>
+								<tr>
+									<td colspan="2" class="orange-3">Prispevok do RFS</td>
+									<td class="orange-4 tar">{{ result.prispevok_do_rfs }}&nbsp;€</td>
+								</tr>
+								<!-- dan zo mzdy -->
+								<tr class="headline">
+									<td colspan="2" class="orange-3">Dan zo mzdy</td>
+									<td class="orange-4 tar">{{result.dan_preddavok}}</td>
+								</tr>
+							</tbody>
+						</table>
+
+						<!-- zostatok table -->
+						<table>
+							<thead>
+								<tr>
+									<th class="brown-0">{{ result.percento_cista }}%</th>
+									<th class="brown-1">Zostatok</th>
+									<th class="brown-2 tar pl5">=&nbsp;{{ result.cista_mzda_final }}&nbsp;€</th>
+								</tr>
+							</thead>
+						</table>
+					</div>
+				</div>
+			<!-- </div> -->
+		<!-- </div> -->
+
+<!-- 		<h3> Zamestanec: </h3>
+
+		<b>Spolocnost:</b> {{ result.spolocnost }} </li><br>
+		<b>Meno:</b> {{ result.meno }} </li><br>
+		<b>Datum:</b> {{ result.datum }}  </li><br>
+		<b>Odpracovane dni:</b> {{ result.odpracovane_hodiny }}  </li><br>
+		<b>Dovolenka:</b> {{ result.zostatkova_dovolenka }}  </li><br>
+		<br>
+		<br>
+		<h3>Tvoja Mzda</h3>
+		<b>Toja mzda:</b> {{ result.celkova_cena_prace }}</li><br>
+		<b>Obedy:</b> {{ result.obedy }}</li><br>
+		<br>
+		<br>
+		<h3>Odvody</h3>
+		<b>All odvody sum:</b> {{ result.odvody_sum }}</li><br>
+		<b>Do zdravotnej SUM:</b> {{ result.do_zdravotnej_sum }}</li><br>
+		<b>Nemocenske poist.:</b> {{ result.vz_nemocenske_poistenie }}</li><br>
+		<b>Urazove poist.:</b> {{ result.poistenie_urazove }}</li><br>
+		<br>
+		<b>Do socialnej SUM:</b> {{ result.do_socialnej_sum }}</li><br>
+		<b>Docho poist. starobne:</b> {{ result.vz_dochodkove_starobne_poistenie }}</li><br>
+		<b>Docho poist. invalidne:</b> {{ result.vz_dochodkove_invalidne_poistenie }}</li><br>
+		<b>Poistenie v nezamestnanost.:</b> {{ result.vz_poistenie_v_nezamestnanosti }}</li><br>
+		<b>Garancne:</b> {{ result.poistenie_garancne }}</li><br>
+		<b>Prispevok do RF:</b> {{ result.prispevok_do_rfs }}</li><br>
+		<br>
+		<b>Prispevok do RF:</b> {{ result.vz_nemocenske_poistenie }}</li><br>
+		<h3>Zostatok</h3>
+		<b>Zostatok:</b> {{ result.cista_mzda }}</li><br>
+		<br>
+		=============================================<br> -->
+		{% endfor %}
+
+	<!-- </div> -->
+
+	
+	
+</body>
+</html>

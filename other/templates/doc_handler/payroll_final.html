@@ -1,0 +1,48 @@
+<html>
+Parsed HTML
+<br>
+<br>
+
+
+{% for result in data.payroll_list.payroll %}
+    <h3> Zamestanec: {{result.osobne_cislo}}</h3>
+
+    <b>Spolocnost:</b> {{ result.spolocnost }} </li><br>
+    <b>Meno:</b> {{ result.meno }} </li><br>
+    <b>Datum:</b> {{ result.datum }}  </li><br>
+    <b>Odpracovane dni:</b> {{ result.odpracovane_hodiny }}  </li><br>
+    <b>Dovolenka:</b> {{ result.zostatkova_dovolenka }}  </li><br>
+    <br>
+    {% if result.premie != None %}<b>Premie:</b> {{ result.premie }}</li><br>{% else%}{% endif %}
+    {% if result.pnka != None %}<b>PN:</b> {{ result.pnka }}</li><br>{% else%}{% endif %}
+    {% if result.lekar_priepustka != None %}<b>Lekar (Priepustka):</b> {{ result.lekar_priepustka }}</li><br>{% else%}{% endif %}
+    {% if result.dovolenka != None %}<b>Dovolenka:</b> {{ result.dovolenka }}</li><br>{% else%}{% endif %}
+    {% if result.zrazka_zo_mzdy != None %}<b>Zrazka zo mzdy:</b> {{ result.zrazka_zo_mzdy }}</li><br>{% else%}{% endif %}
+    <br>
+    <h3>Tvoja Mzda</h3>
+    <b>Toja mzda:</b> {{ result.celkova_cena_prace }}</li><br>
+	<br>
+    <br>
+    <h3>Odvody</h3>
+    <b>Odvody Percento:</b> {{ result.percento_daneodvody }}</li><br>
+	<b>All odvody sum:</b> {{ result.dane_a_odvody_sum }}</li><br>
+	<b>Do zdravotnej SUM:</b> {{ result.do_zdravotnej_sum }}</li><br>
+    <b>Zdravotne poist.:</b> {{ result.zdrav_poist_sum }}</li><br>
+    <br>
+	<b>Do socialnej SUM:</b> {{ result.do_socialnej_sum }}</li><br>
+	<b>Nemocenske poist.:</b> {{ result.nemocenske_poist_sum }}</li><br>
+    <b>Urazove poist.:</b> {{ result.poistenie_urazove }}</li><br>
+    <b>Docho poist. starobne:</b> {{ result.starobne_poist_sum }}</li><br>
+    <b>Docho poist. invalidne:</b> {{ result.invalidne_poist_sum }}</li><br>
+    <b>Poistenie v nezamestnanost.:</b> {{ result.nezam_poist_sum }}</li><br>
+    <b>Garancne:</b> {{ result.poistenie_garancne }}</li><br>
+    <b>Prispevok do RF:</b> {{ result.prispevok_do_rfs }}</li><br>
+    <br>
+    <b>Dan zo mzdy:</b> {{result.dan_preddavok}}</li><br>
+    <h3>Zostatok</h3>
+    <b>Zostatok:</b> {{ result.cista_mzda }}</li><br>
+    <b>Zostatok Percento:</b> {{ result.percento_cista }}</li><br>
+    <br>
+    =============================================<br>
+{% endfor %}
+</html>
