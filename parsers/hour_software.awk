@@ -47,7 +47,7 @@ BEGIN {
 	/DVZ n.hr\./{printf "<denny_vymeriavaci_zaklad>%s</denny_vymeriavaci_zaklad>\n",$3}
 	/^.v.zok /{
 		if($3 == "%")
-			printf "<uvazok>%s</uvazok>\n<uvazok_hodiny_za_tyzden>%s</uvazok_hodiny_za_tyzden>\n<uvazok_hodiny_za_den>%s</uvazok_hodiny_za_den>\n",$2,substr($4,3),$6;
+			printf "<uvazok>%s</uvazok>\n<uvazok_hodiny_za_tyzden>%s</uvazok_hodiny_za_tyzden>\n",$2,$4;
 		else
 			printf "<uvazok>%s</uvazok>\n<uvazok_hodiny_za_tyzden>%s</uvazok_hodiny_za_tyzden>\n<uvazok_hodiny_za_den>%s</uvazok_hodiny_za_den>\n",$2,substr($3,3),$5;
 	}
