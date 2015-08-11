@@ -19,6 +19,7 @@ Pre rozbehanie web rozhrania je nutne nainstalovat tieto baliky (plati pre syste
 apt:
 - python-django
 - gawk
+- slovak locales
 
 python baliky:
 - pip install django-bootstrap3
