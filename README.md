@@ -22,10 +22,10 @@ apt:
 - slovak locales
 
 python baliky:
+- pip install django
 - pip install django-bootstrap3
-- pip install easy\_pdf
+- pip install git+https://github.com/chrisglass/xhtml2pdf.git
 - pip install django-easy-pdf
-- pip install xhtml2pdf
 - pip install xmltodict
 
 Nasledne v adresari mojavyplata spustit:
