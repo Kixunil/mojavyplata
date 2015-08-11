@@ -69,8 +69,8 @@ BEGIN {
 	/DPI-zamestnanec/{printf "<zampoist_invalidne>%s</zampoist_invalidne>\n",$3}
 	/PvN-zamestnanec/{printf "<zampoist_v_nezamestnanosti>%s</zampoist_v_nezamestnanosti>\n",$4}
 	/Da. zo mzdy -preddavok/{printf "<dan_preddavok>%s</dan_preddavok>\n",$6}
-	/ MZDA/{printf "<cista_mzda>%s</cista_mzda>\n",$3}
-	/ PR.JEM/{printf "<cisty_prijem>%s</cisty_prijem>\n",$3}
+	/.?.IST..? MZDA/{printf "<cista_mzda>%s</cista_mzda>\n",$3}
+	/ PR..?JEM/{printf "<cisty_prijem>%s</cisty_prijem>\n",$3}
 	/^O?bedy/{printf "<obedy>%s</obedy>\n",$3}
 	/CELKOV. CENA PR.CE/{printf "<celkova_cena_prace>%s</celkova_cena_prace>\n",$4}
 
