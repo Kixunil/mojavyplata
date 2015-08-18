@@ -16,6 +16,11 @@ Implementovane parsery mzdovych softverov:
 
 Pre rozbehanie web rozhrania je nutne nainstalovat tieto baliky (plati pre systemy s Ubuntu):
 
+apt:
+- python-django
+- gawk
+- slovak locales
+
 python baliky:
 - pip install django
 - pip install django-bootstrap3
