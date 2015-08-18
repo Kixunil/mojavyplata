@@ -1,6 +1,6 @@
 #!/usr/bin/awk -f
 BEGIN { 
-	print "<?xml version=\"1.0\" encoding=\"UTF_8\"?>"
+	print "<?xml version=\"1.0\" encoding=\"utf-8\"?>"
 	print "<payroll_list>" 
 	print "<payroll>" 
 	}
