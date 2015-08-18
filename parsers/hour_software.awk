@@ -92,7 +92,7 @@ BEGIN {
 	/^- zdravotn. poistenie/{printf "<zdravotne_poistenie>%s</zdravotne_poistenie>\n",$4}
 	/^zdravotn. poistenie/{printf "<zdravotne_poistenie>%s</zdravotne_poistenie>\n",$3}
 
-	/^- nemocensk. poist\./{ printf "<nemocenske_poistenie>%s</nemocenske_poistenie>\n",$3}
+	/^- nemocensk. poist\./{ printf "<nemocenske_poistenie>%s</nemocenske_poistenie>\n",$4}
 	/^nemocensk. poist\./{ printf "<nemocenske_poistenie>%s</nemocenske_poistenie>\n",$3}
 
 	/^Osobn. ohodnotenie/{ printf "<osobne_ohodnotenie>%s</osobne_ohodnotenie>\n",$4}
